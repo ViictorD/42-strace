@@ -6,13 +6,46 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:27:45 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/19 19:37:58 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/19 20:09:22 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <strace.h>
 
-pid_t exec_trace(char *path, char **av, char **env)
+int handle_syscall(pid_t pid)
+{
+	return (0);
+}
+
+int handle_signal(pid_t pid)
+{
+	return (0);
+}
+
+void	start_trace(pid_t pid)
+{
+	int stat;
+	int type;
+
+	if (ptrace(PTRACE_SEIZE, pid, NULL, PTRACE_OPTIONS))
+		exit(-1);
+	while (6 * 7)
+	{
+		type = get_sig();
+		if (type == 0)
+			break ;
+		else if (type == 1)
+			if ((stat = handle_syscall(pid)) < 0)
+				break ;
+		else
+			if ((stat = handle_signal(pid)) < 0)
+				break ;
+	}
+	if (WIFSIGNALED(stat))
+		kill(getpid(), WTERMSIG(stat));
+}
+
+void	exec_trace(char *path, char **av, char **env)
 {
 	pid_t ret;
 
@@ -25,5 +58,6 @@ pid_t exec_trace(char *path, char **av, char **env)
 		execve(path, av, env);
 		exit(-1);
 	}
-	return (ret);
+	waitpid(ret, NULL, WUNTRACED);
+	start_trace(ret);
 }
