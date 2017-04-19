@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:51:43 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/19 20:23:59 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/19 20:25:16 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@
 #include <signal.h>
 
 int		get_complete_path(char ret[1024], const char *filename);
-void	exec_trace(char *path, char **a);
+void	exec_trace(char *path, char **av, char **env)
 
 #endif

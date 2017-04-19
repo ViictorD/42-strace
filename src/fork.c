@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:27:45 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/19 20:23:55 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/19 20:25:04 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	start_trace(pid_t pid)
 	int stat;
 	int type;
 
-	if (ptrace(PTRACE_SEIZE, pid, NULL, PTRACE_OPTIONS))
+	if (ptrace(PTRACE_SEIZE, pid, NULL, PTRACE_O_TRACESYSGOOD))
 		exit(-1);
 	while (6 * 7)
 	{
