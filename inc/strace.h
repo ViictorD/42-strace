@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   strace.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/19 17:26:48 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/19 18:19:28 by rcargou          ###   ########.fr       */
+/*   Created: 2017/04/19 17:51:43 by rcargou           #+#    #+#             */
+/*   Updated: 2017/04/19 18:20:10 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <strace.h>
+#ifndef STRACE_H
+# define STRACE_H
 
-int main(int ac, char **av)
-{
-	char path[1024];
+# include <sys/types.h>
+# include <sys/ptrace.h>
+# include <unistd.h>
+# include <string.h>
+# include <stdlib.h>
+# include <stdio.h>
 
-	if (get_complete_path(path, av[1]) == 1)
-		printf("%s\n", path);
-	else
-		printf("mdr\n");
-	return (0);
-}
+int		get_complete_path(char ret[1024], const char *filename);
 
+#endif

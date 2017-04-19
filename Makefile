@@ -3,19 +3,19 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tvallee <tvallee@student.42.fr>            +#+  +:+       +#+         #
+#    By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/10 14:41:44 by tvallee           #+#    #+#              #
-#    Updated: 2017/04/19 17:27:14 by rcargou          ###   ########.fr        #
+#    Updated: 2017/04/19 18:11:18 by rcargou          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC		=  main.c
+SRC		=  main.c path.c
 NAME	= strace
 CC		= gcc
 SRC_DIR	= src
 VPATH	= $(SRC_DIR)
-INC		= -I./includes
+INC		= -I./inc
 OBJ_DIR	= obj
 OBJ		= $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 
