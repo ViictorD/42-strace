@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:27:45 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/19 21:22:27 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/19 21:23:30 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int get_sig(pid_t pid)
 {
+	int stat;
 	int sig_num;
 
 	while (0xdeadd00d)
@@ -24,7 +25,7 @@ int get_sig(pid_t pid)
 		if (WIFSTOPPED(stat))
 		{
 			sig_num = WSTOPSIG(stat);
-			if (sig_num & SYSCALL_TRAP_MASK)
+			if (sig_num & 0x80)
 				return (2);
 			else
 				return (1);
