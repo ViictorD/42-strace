@@ -6,11 +6,16 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:27:45 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/19 20:25:04 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/19 20:26:56 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <strace.h>
+
+int get_sig(pid_t pid)
+{
+
+}
 
 int handle_syscall(pid_t pid)
 {
@@ -31,7 +36,7 @@ void	start_trace(pid_t pid)
 		exit(-1);
 	while (6 * 7)
 	{
-		type = get_sig();
+		type = get_sig(pid);
 		if (type == 0)
 			break ;
 		else if (type == 1)
