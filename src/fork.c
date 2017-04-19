@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:27:45 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/19 21:24:38 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/19 21:33:20 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	start_trace(pid_t pid)
 		exit(-1);
 	while (6 * 7)
 	{
+		printf("COUILLE!!!!\n");
 		type = get_sig(pid);
 		if (type == 0)
 			break ;
