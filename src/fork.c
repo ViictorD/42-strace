@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:27:45 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/19 21:49:55 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/19 21:51:16 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int handle_syscall(pid_t pid)
 {
 	int stat;
 	printf("SYSCALL !!!!!\n");
+	fflush(stdout);
 	stat = 1;
 	return (stat);
 }
@@ -50,6 +51,7 @@ int handle_signal(pid_t pid)
 
 	stat = 1;
 	printf("SIGNAL !!!!!\n");
+	fflush(stdout);
 	return (stat);
 }
 
@@ -63,7 +65,6 @@ void	start_trace(pid_t pid)
 	while (6 * 7)
 	{
 		type = get_sig(pid);
-		printf("%d\n", type);
 		if (type == 0)
 			break ;
 		else if (type == 2)
