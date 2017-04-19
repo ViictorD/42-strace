@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:27:45 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/19 21:43:39 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/19 21:44:24 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int get_sig(pid_t pid)
 	int stat;
 	int sig_num;
 
-	while (0xdeadd00d)
+	while (42)
 	{
 		ptrace(PTRACE_SYSCALL, pid, NULL, NULL);
 		if (waitpid(pid, &stat, 0) == -1)
