@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:27:45 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/19 21:33:20 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/19 21:43:39 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int get_sig(pid_t pid)
 		if (WIFEXITED(&stat) || WIFSIGNALED(&stat))
 			return (0);
 	}
+	return (4);
 }
 
 int handle_syscall(pid_t pid)
@@ -61,14 +62,13 @@ void	start_trace(pid_t pid)
 		exit(-1);
 	while (6 * 7)
 	{
-		printf("COUILLE!!!!\n");
 		type = get_sig(pid);
 		if (type == 0)
 			break ;
 		else if (type == 1)
 			if ((ret = handle_syscall(pid)) < 0)
 				break ;
-		else
+		else if (type == 2)
 			if ((ret = handle_signal(pid)) < 0)
 				break ;
 	}
