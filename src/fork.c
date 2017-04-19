@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:27:45 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/19 21:23:30 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/19 21:24:07 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,10 @@ void	start_trace(pid_t pid)
 		if (type == 0)
 			break ;
 		else if (type == 1)
-			if ((stat = handle_syscall(pid)) < 0)
+			if ((ret = handle_syscall(pid)) < 0)
 				break ;
 		else
-			if ((stat = handle_signal(pid)) < 0)
+			if ((ret = handle_signal(pid)) < 0)
 				break ;
 	}
 	if (WIFSIGNALED(stat))
