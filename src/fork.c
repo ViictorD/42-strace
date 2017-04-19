@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:27:45 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/19 19:16:41 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/19 19:37:58 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ pid_t exec_trace(char *path, char **av, char **env)
 		exit(-1);
 	if (ret == 0)
 	{
+		kill(getpid(), SIGSTOP);
 		execve(path, av, env);
 		exit(-1);
 	}
