@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:27:45 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/19 20:27:29 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/19 21:22:27 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,46 @@
 
 int get_sig(pid_t pid)
 {
+	int sig_num;
 
+	while (0xdeadd00d)
+	{
+		ptrace(PTRACE_SYSCALL, pid, NULL, NULL);
+		if (waitpid(pid, &stat, 0) == -1)
+			exit(0);
+		if (WIFSTOPPED(stat))
+		{
+			sig_num = WSTOPSIG(stat);
+			if (sig_num & SYSCALL_TRAP_MASK)
+				return (2);
+			else
+				return (1);
+		}
+		if (WIFEXITED(&stat) || WIFSIGNALED(&stat))
+			return (0);
+	}
 }
 
 int handle_syscall(pid_t pid)
 {
-	return (0);
+	int stat;
+	printf("SYSCALL !!!!!\n");
+	stat = 1;
+	return (stat);
 }
 
 int handle_signal(pid_t pid)
 {
-	return (0);
+	int stat;
+
+	stat = 1;
+	printf("SIGNAL !!!!!\n");
+	return (stat);
 }
 
 void	start_trace(pid_t pid)
 {
-	int stat;
+	int ret;
 	int type;
 
 	if (ptrace(PTRACE_SEIZE, pid, NULL, PTRACE_O_TRACESYSGOOD))
