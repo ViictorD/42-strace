@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:26:48 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/19 20:22:19 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/19 20:23:04 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int main(int ac, char **av, char **env)
 		printf("fdp\n");
 		return (-1);
 	}
-	get_complete_path(ret, a[1]);
-	exec_trace(ret, env)
+	get_complete_path(ret, av[1]);
+	exec_trace(ret, env);
 	return (0);
 }
 
