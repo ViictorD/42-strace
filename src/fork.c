@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:27:45 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/20 18:57:45 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/20 18:58:25 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int handle_syscall(pid_t pid)
 {
 	int					stat;
 	long				syscall_id, ret;
-	syscall_arg 		args[16];
+	void 				*args[16];
 	int					sig;
 	void				*value;
 
