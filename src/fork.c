@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:27:45 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/20 17:49:39 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/20 18:03:01 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,33 @@ int handle_syscall(pid_t pid)
 	return (stat);
 }
 
+int sigstop_handling(pid_t pid)
+{
+
+}
+
 int handle_signal(pid_t pid)
 {
-	int stat;
+	int			stat;
+	siginfo_t	siginfo;
 
-	stat = 1;
-	printf("SIGNAL !!!!!\n");
-	fflush(stdout);
-	return (stat);
+	if (ptrace(PTRACE_GETSIGINFO, pid, NULL, &siginfo))
+		exit(-1);
+	if (!(siginfo.si_signo == SIGTRAP && siginfo.si_pid == pid))
+		printf("Signal !!");
+	if (siginfo.si_signo != SIGCONT)
+		if (ptrace(PTRACE_CONT, pid, NULL, siginfo.si_signo))
+			exit(-1);
+	if (siginfo.si_signo == SIGSTOP)
+	{
+		if (waitpid(pid, &stat, WUNTRACED) == -1)
+			exit(-1);
+		if (ptrace(PTRACE_LISTEN, pid, NULL, NULL))
+			exit(-1);
+		if (waitpid(pid, &stat, WCONTINUED) == -1)
+			exit(-1);
+	}
+	return (WIFEXITED(stat) || WIFSIGNALED(stat));
 }
 
 void	start_trace(pid_t pid)
@@ -87,7 +106,7 @@ void	exec_trace(char *path, char **av, char **env)
 		exit(-1);
 	if (ret == 0)
 	{
-		//kill(getpid(), SIGSTOP);
+		kill(getpid(), SIGSTOP);
 		execve(path, av, env);
 		exit(-1);
 	}
