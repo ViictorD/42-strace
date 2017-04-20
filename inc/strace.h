@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:51:43 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/20 20:01:06 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/20 20:02:17 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ enum e_type
 
 typedef enum e_type type;
 
-typedef struct s_info;
+typedef struct s_info
 {
 	const char	*name;
 	type		ret;
