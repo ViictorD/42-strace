@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strace.h                                           :+:      :+:    :+:   */
+/*   get_data.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/19 17:51:43 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/20 19:16:56 by rcargou          ###   ########.fr       */
+/*   Created: 2017/04/20 19:06:21 by rcargou           #+#    #+#             */
+/*   Updated: 2017/04/20 19:33:23 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRACE_H
-# define STRACE_H
+#include <strace.h>
 
-# include <sys/types.h>
-# include <sys/ptrace.h>
-# include <unistd.h>
-# include <string.h>
-# include <stdlib.h>
-# include <stdio.h>
-#include <signal.h>
+long get_word(pid_t pid, long w)
+{
+	long data;
 
-int		get_complete_path(char ret[1024], const char *filename);
-void	exec_trace(char *path, char **av, char **env);
-long	get_word(pid_t pid, long w);
-
-#endif
+	// Must be world-aligned
+	data = ptrace(PTRACE_PEEKUSER, pid, sizeof(long) * w, NULL);
+	if (data == -1)
+		exit(-1);
+	return (data);
+}
