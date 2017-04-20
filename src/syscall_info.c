@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/20 19:52:44 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/20 19:59:52 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/20 20:03:15 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -328,3 +328,8 @@ const t_info SYSCALLS[] = {
 	{ "kcmp", int_, 5, { int_, int_, int_, ulong_, ulong_ } },
 	{ "finit_module", int_, 3, { int_, string_, int_ } },
 };
+
+t_info get_info(int id)
+{
+	return SYSCALLS[id];
+}

@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:51:43 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/20 20:02:17 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/20 20:03:28 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ typedef struct s_info
 int		get_complete_path(char ret[1024], const char *filename);
 void	exec_trace(char *path, char **av, char **env);
 long	get_word(pid_t pid, long w);
+t_info	get_info(int id);
 
 #endif
