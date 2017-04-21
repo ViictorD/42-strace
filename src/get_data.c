@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/20 19:06:21 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/21 15:52:26 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/21 15:54:30 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ long get_word_user(pid_t pid, long w)
 	return (data);
 }
 
-void get_data_value(pid_t pid, type type, long value)
+long get_data_value(pid_t pid, type type, long value)
 {
 	return (value);
 }
@@ -37,9 +37,9 @@ void get_args(pid_t pid, long id, void  **out)
 	long		data;
 
 	info = get_info(id);
-	for (i = 0; i < info->arg_num; ++i)
+	for (i = 0; i < info.arg_num; ++i)
 	{
 		data = get_word_user(pid, registers[i]);
-		args[i] = get_data_value(pid, info->args_type[i], data);
+		args[i] = get_data_value(pid, info.args_type[i], data);
 	}
 }
