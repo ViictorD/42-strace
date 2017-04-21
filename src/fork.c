@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:27:45 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/21 18:16:33 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/21 18:17:07 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ void	start_trace(pid_t pid)
 		else if (type == 2)
 		{
 			printf("signal !\n");
+			handle_syscall(pid);
 			//if ((ret = handle_syscall(pid)) < 0)
 			//	break ;
 		}
