@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 16:26:53 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/21 19:07:55 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/21 19:15:03 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void display_ret(long value, long id, void *data)
 	{
 		info = get_info(id);
 		fprintf(stderr, " = ");
-		print_arg(info.ret, data);
+		print_arg(info.ret, value);
 		fprintf(stderr, "\n");
 	}
 }
