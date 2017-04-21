@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:27:45 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/21 18:13:18 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/21 18:14:20 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int handle_signal(pid_t pid)
 	if (!(siginfo.si_signo == SIGTRAP && siginfo.si_pid == pid))
 	{
 		printf("Signal !!");
-		exit(0);
+//		exit(0);
 	}
 	if (siginfo.si_signo != SIGCONT)
 		if (ptrace(PTRACE_CONT, pid, NULL, siginfo.si_signo))
@@ -113,7 +113,7 @@ void	start_trace(pid_t pid)
 		else if (type == 2)
 		{
 			if ((ret = handle_syscall(pid)) < 0)
-				;//break ;
+				break ;
 		}
 		else if (type == 1)
 		{
