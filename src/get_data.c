@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/20 19:06:21 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/21 18:19:10 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/21 18:19:24 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ long get_word_user(pid_t pid, long w)
 	// Must be world-aligned
 	data = ptrace(PTRACE_PEEKUSER, pid, sizeof(long) * w, NULL);
 	if (data == -1)
-		printf("MDR\n", );
+		printf("MDR\n");
 	return (data);
 }
 
