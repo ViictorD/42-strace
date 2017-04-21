@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:51:43 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/21 15:04:37 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/21 15:53:36 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <signal.h>
+# include <sys/ptrace.h>
+# include <sys/reg.h>
 
 enum e_type
 {
