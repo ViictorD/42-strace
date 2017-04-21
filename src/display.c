@@ -6,11 +6,49 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 16:26:53 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/21 16:48:50 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/21 19:03:42 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <strace.h>
+
+static const char *errname[] = {
+	"",
+	"EPERM",
+	"ENOENT",
+	"ESRCH",
+	"EINTR",
+	"EIO",
+	"ENXIO",
+	"E2BIG",
+	"ENOEXEC",
+	"EBADF",
+	"ECHILD",
+	"EAGAIN",
+	"ENOMEM",
+	"EACCES",
+	"EFAULT",
+	"ENOTBLK",
+	"EBUSY",
+	"EEXIST",
+	"EXDEV",
+	"ENODEV",
+	"ENOTDIR",
+	"EISDIR",
+	"EINVAL",
+	"ENFILE",
+	"EMFILE",
+	"ENOTTY",
+	"ETXTBSY",
+	"EFBIG",
+	"ENOSPC",
+	"ESPIPE",
+	"EROFS",
+	"EMLINK",
+	"EPIPE",
+	"EDOM",
+	"ERANGE",
+};
 
 void print_arg(type type, void *value)
 {
@@ -25,5 +63,17 @@ void display_syscall(long id, void **args)
 	fprintf(stderr, "%s ", info.name);
 	for (i = 0; i < info.arg_num; i++)
 		print_arg(info.args_type[i], args[i]);
-	fprintf(stderr, "\n");
+}
+
+void display_ret(long value, long id, void *data)
+{
+	t_info info;
+
+	if (value < 0) //error !
+		fprintf(stderr, "= %d %s (%s)\n", value, errname[-value], strerror(-value));
+	else
+	{
+		info = get_info(id);
+		print_arg(info.return_type, data);
+	}
 }
