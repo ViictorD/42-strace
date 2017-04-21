@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/20 19:06:21 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/21 18:19:24 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/21 18:20:46 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ long get_word_user(pid_t pid, long w)
 
 	// Must be world-aligned
 	data = ptrace(PTRACE_PEEKUSER, pid, sizeof(long) * w, NULL);
-	if (data == -1)
-		printf("MDR\n");
 	return (data);
 }
 
@@ -39,6 +37,7 @@ void get_args(pid_t pid, long id, void  **out)
 	info = get_info(id);
 	for (i = 0; i < info.arg_num; i++)
 	{
+		out[i] == NULL
 		data = get_word_user(pid, registers[i]);
 		out[i] = get_data_value(pid, info.args_type[i], data);
 	}
