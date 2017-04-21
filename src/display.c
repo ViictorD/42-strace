@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 16:26:53 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/21 19:20:28 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/21 19:20:56 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,13 @@ void display_ret(long value, long id, void *data)
 {
 	t_info info;
 
-	//if (value < 0) //error !
-	//	fprintf(stderr, "= %d %s (%s)\n", value, errname[-value], strerror(-value));
-	//else
-	//{
+	if (value < 0) //error !
+		fprintf(stderr, "= %d %s (%s)\n", value, errname[-value], strerror(-value));
+	else
+	{
 		info = get_info(0);
 		fprintf(stderr, " = ");
 		print_arg(info.ret, (void*)value);
 		fprintf(stderr, "\n");
-//	}
+	}
 }
