@@ -6,7 +6,7 @@
 #    By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/10 14:41:44 by tvallee           #+#    #+#              #
-#    Updated: 2017/04/21 16:40:28 by rcargou          ###   ########.fr        #
+#    Updated: 2017/04/21 16:41:11 by rcargou          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,12 +21,12 @@ OBJ		= $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 
 $(NAME): $(OBJ_DIR) $(OBJ)
 	@echo "Linkin'"
-	@$(CC) -o $(NAME) $(CFLAGS) $(OBJ) $(INC) $(LIB) -std=c11
+	@$(CC) -o $(NAME) $(CFLAGS) $(OBJ) $(INC) $(LIB)
 	@echo "Done !"
 
 $(OBJ_DIR)/%.o: %.c
 	@echo "Compiling $<."
-	@$(CC) $(LIN_INC) $(CFLAGS) -c $< $(INC) -o $@ -std=c11
+	@$(CC) $(LIN_INC) $(CFLAGS) -c $< $(INC) -o $@
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
