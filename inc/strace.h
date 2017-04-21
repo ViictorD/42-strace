@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:51:43 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/21 16:41:01 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/21 19:08:37 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,6 @@ void	exec_trace(char *path, char **av, char **env);
 long	get_word(pid_t pid, long w);
 t_info	get_info(int id);
 void	display_syscall(long id, void **args);
+void	display_ret(long value, long id, void *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:27:45 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/21 19:04:33 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/21 19:09:41 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,14 @@ int handle_syscall(pid_t pid)
 	display_syscall(id, args);
 	sig = get_sig(pid);
 	if (sig == 0)
+	{
+		fprintf(stderr, " = ???????\n");
 		exit(-1);
+	}
 	if (sig == 2)
 	{
-		//ret = peek_user(pid, RAX);
-		printf("RETURN VALUE !!!!!\n");
-		//info = get_syscall_info(syscall_id);
-	//	if (info == NULL)
-	//		value = NULL;
-	//	else
-	//		info = peek_value(pid, info->return_type, ret);
-		//output_return_value(ret, syscall_id, value);
+		ret = get_word_user(pid, RAX);
+		display_ret(ret, id, (void*)ret);
 	}
 	else if (sig == 1)
 		return (handle_signal(sig));
