@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:27:45 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/21 18:17:07 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/21 18:17:44 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int handle_syscall(pid_t pid)
 	void				*value;
 
 	id = get_word_user(pid, ORIG_RAX);
+	return 0;
 	get_args(pid, id, args);
 	display_syscall(id, args);
 	sig = get_sig(pid);
@@ -113,9 +114,8 @@ void	start_trace(pid_t pid)
 		else if (type == 2)
 		{
 			printf("signal !\n");
-			handle_syscall(pid);
-			//if ((ret = handle_syscall(pid)) < 0)
-			//	break ;
+			if ((ret = handle_syscall(pid)) < 0)
+				break ;
 		}
 		else if (type == 1)
 		{
