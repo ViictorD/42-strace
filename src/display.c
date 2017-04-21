@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 16:26:53 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/21 16:43:36 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/21 16:46:57 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void print_arg(type type, void *value)
 {
-	fprintf(stderr, "%d\n", (int)value);
+	fprintf(stderr, "%d, ", (int)value);
 }
 
 void display_syscall(long id, void **args)

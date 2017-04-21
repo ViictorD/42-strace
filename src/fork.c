@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:27:45 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/21 16:37:00 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/21 16:47:44 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int handle_syscall(pid_t pid)
 	//output_invocation(syscall_id, args);
 	printf("Syscall!!!");
 	sig = get_sig(pid);
-	if (sig == 0)
+	if (sig == 42)
 		exit(-1);
 	if (sig == 2)
 	{
