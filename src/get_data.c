@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/20 19:06:21 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/21 15:54:53 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/21 15:56:00 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ long get_word_user(pid_t pid, long w)
 	return (data);
 }
 
-long get_data_value(pid_t pid, type type, long value)
+void *get_data_value(pid_t pid, type type, long value)
 {
-	return (value);
+	return (NULL);
 }
 
 void get_args(pid_t pid, long id, void  **out)
