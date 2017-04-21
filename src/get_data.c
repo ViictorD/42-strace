@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/20 19:06:21 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/21 15:54:30 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/21 15:54:53 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,6 @@ void get_args(pid_t pid, long id, void  **out)
 	for (i = 0; i < info.arg_num; ++i)
 	{
 		data = get_word_user(pid, registers[i]);
-		args[i] = get_data_value(pid, info.args_type[i], data);
+		out[i] = get_data_value(pid, info.args_type[i], data);
 	}
 }
