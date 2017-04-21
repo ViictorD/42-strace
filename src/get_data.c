@@ -6,13 +6,13 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/20 19:06:21 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/21 16:35:21 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/21 16:40:08 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <strace.h>
 
-static const registers[256] =  { RDI, RSI, RDX, RCX, R8, R9 };
+static const int registers[256] =  { RDI, RSI, RDX, RCX, R8, R9 };
 
 long get_word_user(pid_t pid, long w)
 {
