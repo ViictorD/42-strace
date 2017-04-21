@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 16:26:53 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/21 19:15:29 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/21 19:18:07 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void display_ret(long value, long id, void *data)
 		fprintf(stderr, "= %d %s (%s)\n", value, errname[-value], strerror(-value));
 	else
 	{
+		fprintf(stderr, "a%da\n", id);
 		info = get_info(id);
 		fprintf(stderr, " = ");
 		print_arg(info.ret, (void*)value);
