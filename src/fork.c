@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:27:45 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/21 18:18:20 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/21 18:18:35 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int handle_syscall(pid_t pid)
 	void				*value;
 
 	id = get_word_user(pid, ORIG_RAX);
-	//get_args(pid, id, args);
+	get_args(pid, id, args);
 	return 0;
 	display_syscall(id, args);
 	sig = get_sig(pid);
