@@ -6,11 +6,11 @@
 #    By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/10 14:41:44 by tvallee           #+#    #+#              #
-#    Updated: 2017/04/21 16:39:57 by rcargou          ###   ########.fr        #
+#    Updated: 2017/04/21 16:40:28 by rcargou          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC		=  main.c path.c fork.c get_data.c syscall_info.c
+SRC		=  main.c path.c fork.c get_data.c syscall_info.c display.c
 NAME	= strace
 CC		= gcc
 SRC_DIR	= src
