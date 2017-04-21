@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:27:45 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/21 19:19:44 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/21 19:20:10 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int handle_syscall(pid_t pid)
 	if (sig == 2)
 	{
 		ret = get_word_user(pid, RAX);
-		//display_ret(ret, id, (void*)ret);
+		display_ret(ret, id, (void*)ret);
 	}
 	else if (sig == 1)
 		return (handle_signal(sig));
