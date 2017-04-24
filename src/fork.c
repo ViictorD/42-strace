@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:27:45 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/24 16:57:53 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/24 17:20:04 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ int handle_syscall(pid_t pid)
 	if (sig == 0)
 	{
 		fprintf(stderr, " = ???????\n");
-		exit(-1);
+		output_exit(0, leave(0));
+		exit(0);
 	}
 	if (sig == 2)
 	{
