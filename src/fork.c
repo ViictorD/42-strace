@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:27:45 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/24 17:23:40 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/24 17:24:54 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int leave(int status)
 	if (WIFEXITED(status))
 		return (WEXITSTATUS(status));
 	else if (WIFSIGNALED(status))
-		return (255 + 1 + WTERMSIG(status));
+		return (125 + 1 + WTERMSIG(status));
 	return 0;
 }
 
