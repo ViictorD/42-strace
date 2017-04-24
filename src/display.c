@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 16:26:53 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/24 15:33:37 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/24 16:02:58 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,13 @@ void print_array(char **v)
 		}
 	}
 	fprintf(stderr, "]");
+}
+
+void display_signal(siginfo_t siginfo)
+{
+	fprintf( stderr, "--- %s {si_signo=%d, si_code=%d, si_pid=%d, si_uid=%d} ---\n",
+		SIGNAMES[siginfo->si_signo], siginfo->si_signo, siginfo->si_code,
+		siginfo->si_pid, siginfo->si_uid);
 }
 
 void print_arg(type type, void *value)
