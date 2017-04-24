@@ -6,13 +6,11 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 16:26:53 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/24 16:05:53 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/24 16:06:33 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <strace.h>
-
-extern const char * const sys_signame[];
 
 static const char *errname[] = {
 	"",
