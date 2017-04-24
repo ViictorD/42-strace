@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/20 19:06:21 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/24 13:21:17 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/24 13:22:48 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ long get_word(pid_t pid, long w)
 {
 	long data;
 
-	data = ptrace(PTRACE_PEEKDATA, pid, w, NULL);
+	data = ptrace(PTRACE_PEEKDATA, pid, w * sizeof(long), NULL);
 	return (data);
 }
 
