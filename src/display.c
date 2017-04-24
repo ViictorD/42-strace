@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 16:26:53 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/24 16:31:44 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/24 16:55:57 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,4 +198,20 @@ void display_ret(long value, long id, void *data)
 void display_exit_signal(siginfo_t *siginfo)
 {
 	fprintf(stderr, "Exited by %s", signals[siginfo->si_signo]);
+}
+
+
+void output_exit(int status, int exit_code)
+{
+	const char *signame;
+
+	if (WIFEXITED(status))
+		fprintf(stderr, EXIT_MESSAGE, exit_code);
+	else if (WIFSIGNALED(status)) {
+		signame = SIGNAMES[WTERMSIG(status)];
+		if (WCOREDUMP(status))
+			fprintf(stderr, KILLED_AND_DUMPED_MESSAGE, signame);
+		else
+			fprintf(stderr, KILLED_MESSAGE, signame);
+	}
 }
