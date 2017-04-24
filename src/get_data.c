@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/20 19:06:21 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/24 15:08:57 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/24 15:17:57 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ char **get_2d_string(pid_t pid, long addr)
 	ret = malloc(256 * sizeof(char*));
 	for (i = 0; 42 ;i++)
 	{
-		if ((a = get_word(pid, addr + i)) > 0)
+		if ((a = get_word(pid, addr + i * sizeof(long))) > 0)
 			ret[i] = get_string(pid, a);
 		else
 			break ;
