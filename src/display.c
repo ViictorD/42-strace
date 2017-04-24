@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 16:26:53 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/24 16:10:05 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/24 16:24:49 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,6 +185,8 @@ void display_ret(long value, long id, void *data)
 
 	if (value < 0 && -value < sizeof(errname) / sizeof(char*)) //error !
 		fprintf(stderr, "= -1 %s (%s)\n", errname[-value], strerror(-value));
+	else if (vallue < 0)
+		fprintf(stderr, "= -1 ERROR: no data available");
 	else
 	{
 		info = get_info(id);
