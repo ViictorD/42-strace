@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:27:45 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/24 17:45:24 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/24 17:45:52 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,11 @@ int handle_signal(pid_t pid)
 			return (0);
 	}
 	if (siginfo.si_signo != SIGCONT)
+	{
 		if (ptrace(PTRACE_CONT, pid, NULL, siginfo.si_signo))
 			exit(-1);
+		return (0);
+	}
 	if (siginfo.si_signo == SIGSTOP)
 	{
 		if (waitpid(pid, &stat, WUNTRACED) == -1)
