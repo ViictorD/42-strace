@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 16:26:53 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/24 14:00:05 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/24 14:01:48 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,15 +79,15 @@ void print_string(char *str)
 		else
 			fprintf(stderr, "\\%d", str[i]);
 	}
-	fprintf(stderr, "\", ");
+	fprintf(stderr, "\"");
 }
 
 void print_pointer(void *value)
 {
 	if (value == NULL)
-		fprintf((stderr), "NULL, ");
+		fprintf((stderr), "NULL");
 	else
-		fprintf(stderr, "0x%x, ", value);
+		fprintf(stderr, "0x%x", value);
 }
 
 void print_arg(type type, void *value)
@@ -97,7 +97,7 @@ void print_arg(type type, void *value)
 	else if (type == string_)
 		print_string((char*)value);
 	else
-		fprintf(stderr, "%d, ", (int)value);
+		fprintf(stderr, "%d", (int)value);
 }
 
 void display_syscall(long id, void **args)
@@ -107,7 +107,10 @@ void display_syscall(long id, void **args)
 	info = get_info(id);
 	fprintf(stderr, "%s( ", info.name);
 	for (i = 0; i < info.arg_num; i++)
+	{
 		print_arg(info.args_type[i], args[i]);
+		fprintf(stderr, ", ");
+	}
 	fprintf(stderr, ") ");
 }
 
