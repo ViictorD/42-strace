@@ -6,11 +6,13 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 16:26:53 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/24 16:04:02 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/24 16:05:53 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <strace.h>
+
+extern const char * const sys_signame[];
 
 static const char *errname[] = {
 	"",
@@ -113,7 +115,7 @@ void print_array(char **v)
 void display_signal(siginfo_t *siginfo)
 {
 	fprintf( stderr, "--- %s {si_signo=%d, si_code=%d, si_pid=%d, si_uid=%d} ---\n",
-		SIGNAMES[siginfo->si_signo], siginfo->si_signo, siginfo->si_code,
+		sys_signame[siginfo->si_signo], siginfo->si_signo, siginfo->si_code,
 		siginfo->si_pid, siginfo->si_uid);
 }
 
