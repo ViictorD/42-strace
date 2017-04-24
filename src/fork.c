@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:27:45 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/24 17:44:02 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/24 17:45:24 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,11 +91,11 @@ int handle_signal(pid_t pid)
 			exit(-1);
 		if (waitpid(pid, &stat, WCONTINUED) == -1)
 			exit(-1);
+		return (0);
 	}
 	if (WIFSIGNALED(stat))
 	{
 		output_exit(stat, WTERMSIG(siginfo.si_signo));
-		if (WIFEXITED(stat))
 		kill(getpid(), WTERMSIG(siginfo.si_signo));
 	}
 	return (0);
