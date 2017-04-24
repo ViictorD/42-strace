@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 16:26:53 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/24 17:37:08 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/24 17:48:04 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -210,6 +210,6 @@ void output_exit(int status, int exit_code)
 	else 
 	{
 		signame = signals[exit_code];
-		fprintf(stderr, "killed by %s\n", signame);
+		fprintf(stderr, "killed by %s\n", "signame");
 	}
 }
