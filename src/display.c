@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 16:26:53 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/24 13:46:41 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/24 13:52:43 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,14 +82,22 @@ void print_string(char *str)
 	fprintf(stderr, "\", ");
 }
 
+void print_pointer(void *value)
+{
+	if (value == NULL)
+		fprintf((stderr), "NULL");
+	else
+		fprintf(stderr, "0x%x", value);
+}
+
 void print_arg(type type, void *value)
 {
-	if (type == string_)
-	{
+	if (type == pointer_)
+		print_pointer(value);
+	else if (type == string_)
 		print_string((char*)value);
-		return ;
-	}
-	fprintf(stderr, "%d, ", (int)value);
+	else
+		fprintf(stderr, "%d, ", (int)value);
 }
 
 void display_syscall(long id, void **args)
