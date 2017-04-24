@@ -6,11 +6,46 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 16:26:53 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/24 16:06:33 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/24 16:08:08 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <strace.h>
+
+const char *signals[] = {
+	"",
+	"SIGHUP",
+	"SIGINT",
+	"SIGQUIT",
+	"SIGILL",
+	"SIGTRAP",
+	"SIGABRT",
+	"SIGBUS",
+	"SIGFPE",
+	"SIGKILL",
+	"SIGUSR1",
+	"SIGSEGV",
+	"SIGUSR2",
+	"SIGPIPE",
+	"SIGALRM",
+	"SIGTERM",
+	"SIGSTKFLT",
+	"SIGCHLD",
+	"SIGCONT",
+	"SIGSTOP",
+	"SIGTSTP",
+	"SIGTTIN",
+	"SIGTTOU",
+	"SIGURG",
+	"SIGXCPU",
+	"SIGXFSZ",
+	"SIGVTALRM",
+	"SIGPROF",
+	"SIGWINCH",
+	"SIGIO",
+	"SIGPWR",
+	"SIGSYS",
+};
 
 static const char *errname[] = {
 	"",
@@ -113,7 +148,7 @@ void print_array(char **v)
 void display_signal(siginfo_t *siginfo)
 {
 	fprintf( stderr, "--- %s {si_signo=%d, si_code=%d, si_pid=%d, si_uid=%d} ---\n",
-		sys_signame[siginfo->si_signo], siginfo->si_signo, siginfo->si_code,
+		signals[siginfo->si_signo], siginfo->si_signo, siginfo->si_code,
 		siginfo->si_pid, siginfo->si_uid);
 }
 
