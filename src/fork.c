@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:27:45 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/24 17:20:04 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/24 17:23:40 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,11 @@ int get_sig(pid_t pid)
 				return (1);
 		}
 		if (WIFEXITED(&stat) || WIFSIGNALED(&stat))
-			return (0);
+		{
+			fprintf(stderr, " = ???????\n");
+			output_exit(stat, leave(stat));
+			exit(stat);
+		}
 	}
 	return (4);
 }
@@ -48,12 +52,6 @@ int handle_syscall(pid_t pid)
 	get_args(pid, id, args);
 	display_syscall(id, args);
 	sig = get_sig(pid);
-	if (sig == 0)
-	{
-		fprintf(stderr, " = ???????\n");
-		output_exit(0, leave(0));
-		exit(0);
-	}
 	if (sig == 2)
 	{
 		ret = get_word_user(pid, RAX);
