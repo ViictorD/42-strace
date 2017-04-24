@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:27:45 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/24 18:05:43 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/24 18:15:53 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,6 @@ int handle_syscall(pid_t pid)
 	else if (sig == 1)
 		return (handle_signal(sig));
 	return (stat);
-}
-
-int sigstop_handling(pid_t pid)
-{
-
 }
 
 int handle_signal(pid_t pid)

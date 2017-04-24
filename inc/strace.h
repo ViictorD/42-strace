@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:51:43 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/24 17:00:04 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/24 18:24:16 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <signal.h>
 # include <sys/ptrace.h>
 # include <sys/reg.h>
+# include <time.h>
 
 enum e_type
 {
@@ -36,13 +37,22 @@ enum e_type
 
 typedef enum e_type type;
 
-typedef struct s_info
+typedef struct	s_record
+{
+	time_t		time;
+	int			errcount;
+	int			count;
+}				t_record;
+
+typedef struct	s_info
 {
 	const char	*name;
 	type		ret;
 	unsigned	arg_num;
 	type		args_type[24];
-}	t_info;
+}				t_info;
+
+t_record		syscall[313];
 
 int		get_complete_path(char ret[1024], const char *filename);
 void	exec_trace(char *path, char **av, char **env);
