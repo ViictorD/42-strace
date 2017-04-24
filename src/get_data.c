@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/20 19:06:21 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/24 13:45:40 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/24 15:08:57 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,30 @@ char *get_string(pid_t pid, long addr)
 	return (string);
 }
 
+char **get_2d_string(pid_t pid, long addr)
+{
+	char **ret;
+	int i;
+	long a;
+
+	ret = malloc(256 * sizeof(char*));
+	for (i = 0; 42 ;i++)
+	{
+		if ((a = get_word(pid, addr + i)) > 0)
+			ret[i] = get_string(pid, a);
+		else
+			break ;
+	}
+	ret[i] = NULL;
+	return ret;
+}
+
 void *get_data_value(pid_t pid, type type, long value)
 {
 	if (type == string_)
 		return (get_string(pid, value));
+	if (type == array_)
+		return (get_2d_string(pid, value));
 	return ((void*)value);
 }
 
