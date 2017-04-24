@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/20 19:52:44 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/24 15:02:14 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/24 15:27:25 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ const t_info SYSCALLS[] = {
 	{ "poll", int_, 3, { pointer_, uint_, int_ } },
 	{ "lseek", long_, 3, { uint_, long_, uint_ } },
 	{ "mmap", pointer_, 6, { ulong_, ulong_, ulong_, ulong_, ulong_, ulong_ } },
-	{ "mprotect", int_, 3, { ulong_, ulong_, ulong_ } },
+	{ "mprotect", int_, 3, { pointer_, ulong_, ulong_ } },
 	{ "munmap", int_, 2, { pointer_, ulong_ } },
 	{ "brk", pointer_, 1, { pointer_ } },
 	{ "rt_sigaction", long_, 4, { int_, pointer_, pointer_, ulong_ } },
@@ -171,7 +171,7 @@ const t_info SYSCALLS[] = {
 	{ "pivot_root", int_, 2, { string_, string_ } },
 	{ "_sysctl", int_, 1, { pointer_ } },
 	{ "prctl", int_, 5, { int_, ulong_, ulong_, ulong_, ulong_ } },
-	{ "arch_prctl", int_, 3, { pointer_, int_, pointer_ } },
+	{ "arch_prctl", int_, 2, { pointer_, pointer_ } },
 	{ "adjtimex", int_, 1, { pointer_ } },
 	{ "setrlimit", long_, 2, { uint_, pointer_ } },
 	{ "chroot", int_, 1, { string_ } },
