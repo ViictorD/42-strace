@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/20 19:52:44 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/24 12:50:04 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/24 13:54:16 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ const t_info SYSCALLS[] = {
 	{ "lseek", long_, 3, { uint_, long_, uint_ } },
 	{ "mmap", pointer_, 6, { ulong_, ulong_, ulong_, ulong_, ulong_, ulong_ } },
 	{ "mprotect", int_, 3, { ulong_, ulong_, ulong_ } },
-	{ "munmap", int_, 2, { ulong_, ulong_ } },
+	{ "munmap", int_, 2, { pointer_, ulong_ } },
 	{ "brk", pointer_, 1, { pointer_ } },
 	{ "rt_sigaction", long_, 4, { int_, pointer_, pointer_, ulong_ } },
 	{ "rt_sigprocmask", long_, 4, { int_, pointer_, pointer_, ulong_ } },
