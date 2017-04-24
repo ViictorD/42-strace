@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/20 19:06:21 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/24 13:23:18 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/24 13:23:34 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ char *get_string(pid_t pid, long addr)
 	string[0] = 0;
 	for (i = 0; i < 256; i++)
 	{
-		data = get_word(pid, addr + i * 4);
-		memcpy(&string[i * 4], &data, sizeof(long));
+		data = get_word(pid, addr + i * sizeof(long) / 8);
+		memcpy(&string[i * sizeof(long) / 8], &data, sizeof(long));
 		for (j = 0; j < sizeof(long) / 8; j++)
 			if (&((char*)data)[j] == '\0')
 				break ;
