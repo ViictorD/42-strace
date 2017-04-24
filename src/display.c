@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 16:26:53 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/24 15:17:24 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/24 15:21:03 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,11 +94,18 @@ void print_array(char **v)
 {
 	int i;
 
-	fprintf(stderr, "[");
 	for (i = 0; v[i]; i++)
-	{
-		print_string(v[i]);
-		fprintf(stderr, ", ");
+			;
+	fprintf(stderr, "[");
+	if (i > 4)
+		fprintf(stderr, "/* %d VARS */", i);
+	else
+	{ 
+		for (i = 0; v[i]; i++)
+		{
+			print_string(v[i]);
+			fprintf(stderr, ", ");
+		}
 	}
 	fprintf(stderr, "]");
 }
