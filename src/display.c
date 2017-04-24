@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 16:26:53 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/24 13:26:12 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/24 13:30:21 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,24 @@ static const char *errname[] = {
 	"ERANGE",
 };
 
+void print_string(char *str)
+{
+	int i;
+
+	for (i = 0; str[i]; i++)
+	{
+		if (str[i] > ' ' && str[i] < 127)
+			fprintf(stderr, "%c\n", str[i]);
+		else
+			fprintf(stderr, "\\%d", str[i]);
+	}
+}
+
 void print_arg(type type, void *value)
 {
 	if (type == string_)
 	{
-		fprintf(stderr, "%s, ", value);
+		print_string((char*)value);
 		return ;
 	}
 	fprintf(stderr, "%d, ", (int)value);
