@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:27:45 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/24 16:18:44 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/24 16:22:11 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,15 +66,6 @@ int handle_syscall(pid_t pid)
 int sigstop_handling(pid_t pid)
 {
 
-}
-
-void own_signal(int signo)
-{
-	siginfo_t	siginfo;
-
-	ptrace(PTRACE_GETSIGINFO, getpid(), NULL, &siginfo);
-	display_signal(&siginfo);
-	exit(0);
 }
 
 int handle_signal(pid_t pid)
@@ -137,7 +128,6 @@ void	exec_trace(char *path, char **av, char **env)
 {
 	pid_t ret;
 
-	signal(SIGINT, own_signal);
 	ret = fork();
 	if (ret < 0)
 		exit(-1);
