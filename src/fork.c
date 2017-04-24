@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:27:45 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/24 16:50:24 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/24 16:54:43 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,15 @@ int sigstop_handling(pid_t pid)
 
 }
 
+void leave(int status)
+{
+	if (WIFEXITED(status))
+		return (WEXITSTATUS(status));
+	else if (WIFSIGNALED(status))
+		return (CHAR_MAX + 1 + WTERMSIG(status));
+	exit(status);
+}
+
 int handle_signal(pid_t pid)
 {
 	int			stat;
@@ -95,10 +104,9 @@ int handle_signal(pid_t pid)
 	}
 	if (WIFSIGNALED(stat))
 	{
-		display_exit_signal(&siginfo);
-		kill(getpid(), WTERMSIG(stat));
+		leave(stat);
 	}
-	return (WIFEXITED(stat) || WIFSIGNALED(stat));
+	return (stat);
 }
 
 void	start_trace(pid_t pid)
@@ -124,6 +132,7 @@ void	start_trace(pid_t pid)
 				break ;
 		}
 	}
+	leave(ret);
 }
 
 void	exec_trace(char *path, char **av, char **env)
