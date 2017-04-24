@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:27:45 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/24 16:01:02 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/24 16:04:08 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int handle_signal(pid_t pid)
 		exit(-1);
 	if (!(siginfo.si_signo == SIGTRAP && siginfo.si_pid == pid))
 	{
-		display_signal(siginfo);
+		display_signal(&siginfo);
 		if (siginfo.si_signo == SIGCHLD)
 			return (0);
 		exit(0);
