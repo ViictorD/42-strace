@@ -6,46 +6,11 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 16:26:53 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/24 16:57:38 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/24 16:59:35 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <strace.h>
-
-const char *signals[] = {
-	"",
-	"SIGHUP",
-	"SIGINT",
-	"SIGQUIT",
-	"SIGILL",
-	"SIGTRAP",
-	"SIGABRT",
-	"SIGBUS",
-	"SIGFPE",
-	"SIGKILL",
-	"SIGUSR1",
-	"SIGSEGV",
-	"SIGUSR2",
-	"SIGPIPE",
-	"SIGALRM",
-	"SIGTERM",
-	"SIGSTKFLT",
-	"SIGCHLD",
-	"SIGCONT",
-	"SIGSTOP",
-	"SIGTSTP",
-	"SIGTTIN",
-	"SIGTTOU",
-	"SIGURG",
-	"SIGXCPU",
-	"SIGXFSZ",
-	"SIGVTALRM",
-	"SIGPROF",
-	"SIGWINCH",
-	"SIGIO",
-	"SIGPWR",
-	"SIGSYS",
-};
 
 static const char *errname[] = {
 	"",
@@ -206,12 +171,10 @@ void output_exit(int status, int exit_code)
 	const char *signame;
 
 	if (WIFEXITED(status))
-		fprintf(stderr, EXIT_MESSAGE, exit_code);
-	else if (WIFSIGNALED(status)) {
+		fprintf(stderr, "exit with", exit_code);
+	else 
+	{
 		signame = SIGNAMES[WTERMSIG(status)];
-		if (WCOREDUMP(status))
-			fprintf(stderr, KILLED_AND_DUMPED_MESSAGE, signame);
-		else
-			fprintf(stderr, KILLED_MESSAGE, signame);
+		fprintf(stderr, "killed by", signame);
 	}
 }

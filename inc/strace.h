@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:51:43 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/24 16:56:50 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/24 16:59:41 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,41 @@ void	display_signal(siginfo_t *siginfo);
 void	display_ret(long value, long id, void *data);
 void	display_exit_signal(siginfo_t *siginfo);
 void	output_exit(int status, int exit_code);
+
+
+const char *signals[] = {
+	"",
+	"SIGHUP",
+	"SIGINT",
+	"SIGQUIT",
+	"SIGILL",
+	"SIGTRAP",
+	"SIGABRT",
+	"SIGBUS",
+	"SIGFPE",
+	"SIGKILL",
+	"SIGUSR1",
+	"SIGSEGV",
+	"SIGUSR2",
+	"SIGPIPE",
+	"SIGALRM",
+	"SIGTERM",
+	"SIGSTKFLT",
+	"SIGCHLD",
+	"SIGCONT",
+	"SIGSTOP",
+	"SIGTSTP",
+	"SIGTTIN",
+	"SIGTTOU",
+	"SIGURG",
+	"SIGXCPU",
+	"SIGXFSZ",
+	"SIGVTALRM",
+	"SIGPROF",
+	"SIGWINCH",
+	"SIGIO",
+	"SIGPWR",
+	"SIGSYS",
+};
 
 #endif
