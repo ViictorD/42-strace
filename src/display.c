@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 16:26:53 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/24 13:44:19 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/24 13:46:13 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,12 @@ void print_string(char *str)
 	fprintf(stderr, "\"");
 	for (i = 0; str[i]; i++)
 	{
-		if (str[i] == '\t')
+		if (i > 256)
+		{
+			fprintf(stderr, "...");
+			break ;
+		}
+		else if (str[i] == '\t')
 			fprintf(stderr, "\\t");
 		else if (str[i] == '\a')
 			fprintf(stderr, "\\a");
