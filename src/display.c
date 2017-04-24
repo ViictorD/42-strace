@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 16:26:53 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/24 17:50:39 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/24 17:51:10 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,5 +206,5 @@ void output_exit(int status, int exit_code)
 	if (WIFEXITED(status))
 		fprintf(stderr, "exit with %d\n", exit_code);
 	else 
-		fprintf(stderr, "killed by %s\n", signals[exit_code]);
+		fprintf(stderr, "killed by %s %d\n", signals[exit_code], exit_code);
 }
