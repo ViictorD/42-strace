@@ -6,11 +6,46 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 16:26:53 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/24 16:59:35 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/24 17:11:32 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <strace.h>
+
+const char *signals[] = {
+	"",
+	"SIGHUP",
+	"SIGINT",
+	"SIGQUIT",
+	"SIGILL",
+	"SIGTRAP",
+	"SIGABRT",
+	"SIGBUS",
+	"SIGFPE",
+	"SIGKILL",
+	"SIGUSR1",
+	"SIGSEGV",
+	"SIGUSR2",
+	"SIGPIPE",
+	"SIGALRM",
+	"SIGTERM",
+	"SIGSTKFLT",
+	"SIGCHLD",
+	"SIGCONT",
+	"SIGSTOP",
+	"SIGTSTP",
+	"SIGTTIN",
+	"SIGTTOU",
+	"SIGURG",
+	"SIGXCPU",
+	"SIGXFSZ",
+	"SIGVTALRM",
+	"SIGPROF",
+	"SIGWINCH",
+	"SIGIO",
+	"SIGPWR",
+	"SIGSYS",
+};
 
 static const char *errname[] = {
 	"",
@@ -174,7 +209,7 @@ void output_exit(int status, int exit_code)
 		fprintf(stderr, "exit with", exit_code);
 	else 
 	{
-		signame = SIGNAMES[WTERMSIG(status)];
+		signame = signals[WTERMSIG(status)];
 		fprintf(stderr, "killed by", signame);
 	}
 }
