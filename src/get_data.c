@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/20 19:06:21 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/24 13:17:29 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/24 13:20:01 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ char *get_string(pid_t pid, long addr)
 	long data;
 	char *string;
 	unsigned i;
+	int j;
 	int next;
 
 	string = (char *)malloc(sizeof(char) * (256 * 4 + 1));
@@ -48,8 +49,8 @@ char *get_string(pid_t pid, long addr)
 	for (i = 0; i < 256; i++)
 	{
 		data = get_word(pid, addr + i);
-		memcpy(&string[i * 4], data, sizeof(long));
-		for (int j = 0; j < sizeof(long) / 8; j++)
+		memcpy(&string[i * 4], &data, sizeof(long));
+		for (j = 0; j < sizeof(long) / 8; j++)
 			if (&((char*)data)[j] == '\0')
 				break ;
 	}
