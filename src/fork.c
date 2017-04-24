@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:27:45 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/24 17:52:35 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/24 17:53:10 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,7 @@ int handle_signal(pid_t pid)
 			exit(-1);
 		return (0);
 	}
-	output_exit(stat, siginfo.si_signo);
-	fprintf(stderr, "mdr!!!" );
+	output_exit(stat, 33);
 	kill(getpid(), WTERMSIG(siginfo.si_signo));
 	return (0);
 }
