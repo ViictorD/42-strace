@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:51:43 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/24 18:24:16 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/24 18:24:42 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ typedef struct	s_info
 	type		args_type[24];
 }				t_info;
 
-t_record		syscall[313];
+t_record		syscall_record[313];
 
 int		get_complete_path(char ret[1024], const char *filename);
 void	exec_trace(char *path, char **av, char **env);
