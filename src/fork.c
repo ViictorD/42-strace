@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:27:45 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/24 16:17:53 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/24 16:18:44 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,10 +136,8 @@ void	start_trace(pid_t pid)
 void	exec_trace(char *path, char **av, char **env)
 {
 	pid_t ret;
-	int i;
 
-	for (i = 0; i < 31; i++)
-		signal(SIGHUP + i, own_signal);
+	signal(SIGINT, own_signal);
 	ret = fork();
 	if (ret < 0)
 		exit(-1);
