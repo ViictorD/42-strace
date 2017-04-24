@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 16:26:53 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/24 13:40:11 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/24 13:41:03 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void print_string(char *str)
 			fprintf(stderr, "\\v");
 		else if (str[i] == '\f')
 			fprintf(stderr, "\\f");
-		else if (str[i] > 0 && str[i] < 127)
+		else if (str[i] > 32 && str[i] < 127)
 			fprintf(stderr, "%c", str[i]);
 		else
 			fprintf(stderr, "\\%d", str[i]);
