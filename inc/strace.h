@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:51:43 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/24 16:05:34 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/24 16:28:59 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,6 @@ t_info	get_info(int id);
 void	display_syscall(long id, void **args);
 void	display_signal(siginfo_t *siginfo);
 void	display_ret(long value, long id, void *data);
+void	display_exit_signal(siginfo_t *siginfo);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 16:26:53 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/24 16:25:34 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/24 16:28:51 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,4 +194,8 @@ void display_ret(long value, long id, void *data)
 		print_arg(info.ret, (void*)value);
 		fprintf(stderr, "\n");
 	}
+}
+void display_exit_signal(siginfo_t *siginfo)
+{
+	fprintf(stderr, "Exited by %s", signals[siginfo.si_signo]);
 }
