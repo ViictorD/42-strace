@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:27:45 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/24 17:28:06 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/24 17:33:58 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int handle_signal(pid_t pid)
 	{
 		output_exit(stat, siginfo.si_signo);
 	}
-	return (stat);
+	return (WIFSIGNALED(stat));
 }
 
 void	start_trace(pid_t pid)
