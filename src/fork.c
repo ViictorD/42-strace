@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:27:45 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/24 16:12:52 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/24 16:14:16 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,11 @@ int sigstop_handling(pid_t pid)
 
 }
 
-int own_signal(int signo)
+void *own_signal(int signo)
 {
 	siginfo_t	siginfo;
 
-	ptrace(PTRACE_GETSIGINFO, getpid(), NULL, &siginfo)
+	ptrace(PTRACE_GETSIGINFO, getpid(), NULL, &siginfo);
 	display_signal(&siginfo);
 	exit(0);
 }
