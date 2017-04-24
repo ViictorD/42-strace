@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 16:26:53 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/24 15:10:43 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/24 15:11:11 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,14 +93,14 @@ void print_pointer(void *value)
 void print_array(char **v)
 {
 	int i;
-	fprintf(stderr, "[", );
+
+	fprintf(stderr, "[");
 	for (i = 0; v[i]; i++)
 	{
 		print_string(v[i]);
 		fprintf(stderr, ", ");
 	}
-	fprintf(stderr, "]", );
-
+	fprintf(stderr, "]");
 }
 
 void print_arg(type type, void *value)
