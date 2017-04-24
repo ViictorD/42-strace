@@ -6,7 +6,7 @@
 /*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:27:45 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/24 18:04:27 by rcargou          ###   ########.fr       */
+/*   Updated: 2017/04/24 18:04:43 by rcargou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ int get_sig(pid_t pid)
 		}
 		if (WIFSTOPPED(stat))
 		{
-			output_exit(stat, WEXITSTATUS(status));
-			exit(WEXITSTATUS(status));
+			output_exit(stat, WEXITSTATUS(stat));
+			exit(WEXITSTATUS(stat));
 		}
 		if (WIFSIGNALED(stat))
 		{
