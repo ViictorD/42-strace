@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fork.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcargou <rcargou@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vdarmaya <vdarmaya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/19 17:27:45 by rcargou           #+#    #+#             */
-/*   Updated: 2017/04/24 18:38:50 by rcargou          ###   ########.fr       */
+/*   Created: 2019/05/07 15:39:17 by vdarmaya          #+#    #+#             */
+/*   Updated: 2019/05/07 16:11:57 by vdarmaya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,21 @@ int get_sig(pid_t pid)
 		ptrace(PTRACE_SYSCALL, pid, NULL, NULL);
 		if (waitpid(pid, &stat, 0) == -1)
 			exit(0);
-		if (WIFSTOPPED(stat))
+		if (WIFSTOPPED(stat)) // si le fils est arreter par la delivrance d'un signal
 		{
-			sig_num = WSTOPSIG(stat);
+			sig_num = WSTOPSIG(stat); // get le num du signal
 			if (sig_num & 0x80)
 				return (2);
 			else
 				return (1);
 		}
-		if (WIFEXITED(stat))
+		if (WIFEXITED(stat)) // si il est stoppe normalement
 		{
 			fprintf(stderr, " = ???????\n");
 			output_exit(stat, WEXITSTATUS(stat));
 			exit(WEXITSTATUS(stat));
 		}
-		if (WIFSIGNALED(stat))
+		if (WIFSIGNALED(stat)) // si le fils a recus un signal pour le kill
 		{
 			output_exit(stat, WTERMSIG(stat));
 			kill(getpid(), WTERMSIG(stat));
@@ -106,7 +106,7 @@ void	start_trace(pid_t pid)
 
 	if (ptrace(PTRACE_SEIZE, pid, NULL, PTRACE_O_TRACESYSGOOD))
 		exit(-1);
-	while (6 * 7)
+	while (1)
 	{
 		type = get_sig(pid);
 		if (type == 0)
