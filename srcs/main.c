@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jtranchi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vdarmaya <vdarmaya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/10 11:16:30 by jtranchi          #+#    #+#             */
-/*   Updated: 2018/08/10 11:16:32 by jtranchi         ###   ########.fr       */
+/*   Updated: 2019/05/10 14:37:45 by vdarmaya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int sigs()
 			printf("--- %s---\n", get_signal_name(WSTOPSIG(status)));
 			if (WSTOPSIG(status) == SIGSEGV)
 				return (1);
-			//ptrace(PTRACE_INTERRUPT, child , 0, 0);
 			wait_for_syscall();
 		}
 	}

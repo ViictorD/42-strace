@@ -19,7 +19,7 @@ CE = \033[0m
 CB = \033[34m
 INC = -I ./includes/
 
-all: start lib $(NAME)
+all: lib $(NAME)
 
 lib:
 	-@make -C libft nohd
@@ -28,29 +28,18 @@ lib:
 $(NAME): $(OBJ)
 	@gcc -o $(NAME) $(OBJ) $(FLAG) $(INC) $(LIB);
 	@echo "\033[K$(CY)[FT_STRACE] :$(CE) $(CG)Compiling ft_strace$(CE)";
-
-
-start:
-	@echo "\n";
-	@echo "			$(CG)      :::::::::: :::::::::::           :::::::: ::::::::::: :::::::::      :::      ::::::::  ::::::::::   $(CE)";
-	@echo "			$(CG)     :+:            :+:              :+:    :+:    :+:     :+:    :+:   :+: :+:   :+:    :+: :+:           $(CE)";
-	@echo "			$(CG)    +:+            +:+              +:+           +:+     +:+    +:+  +:+   +:+  +:+        +:+            $(CE)";
-	@echo "			$(CG)   :#::+::#       +#+              +#++:++#++    +#+     +#++:++#:  +#++:++#++: +#+        +#++:++#        $(CE)";
-	@echo "			$(CG)  +#+            +#+                     +#+    +#+     +#+    +#+ +#+     +#+ +#+        +#+              $(CE)";
-	@echo "			$(CG) #+#            #+#              #+#    #+#    #+#     #+#    #+# #+#     #+# #+#    #+# #+#               $(CE)";
-	@echo "			$(CG)###            ###    ########## ########     ###     ###    ### ###     ###  ########  ##########         $(CE)";
-	@echo "\n";
+	
 
 $(OBJ): $(OBJDIR)%.o: $(SRCDIR)%.c
 	@echo "\033[K$(CY)[FT_STRACE] :$(CE) $(CG)Compiling $<$(CE)\033[1A";
 	@gcc $(FLAG) -c $< -o $@ $(INC)
 
-clean: start
+clean:
 	@echo "$(CY)[FT_STRACE] :$(CE) $(CG)Cleaning ft_strace objects$(CE)";
 	-@make -C libft nohdclean;
 	@/bin/rm -rf $(OBJ);
 
-fclean: start clean
+fclean: clean
 	@echo "\033[K$(CY)[FT_STRACE] :$(CE) $(CG)Cleaning binairies ...$(CE)";
 	-@make -C libft nohdfclean;
 	@/bin/rm -f $(NAME);

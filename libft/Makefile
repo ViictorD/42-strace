@@ -1,163 +1,165 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: jtranchi <jtranchi@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2016/01/28 18:42:36 by jtranchi          #+#    #+#              #
-#    Updated: 2017/08/09 16:59:44 by jtranchi         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+NAME =	libft.a
 
-FLAGS= -Wall -Wextra -Werror
+AR =		ar
+CC =		gcc
+AFLAGS =	rcus
+CFLAGS =	-Wall -Werror -Wextra -Ofast
 
-SRC= ft_memset.c\
-	 ft_bzero.c\
-	 ft_memcpy.c\
-	 ft_memccpy.c\
-	 ft_memmove.c\
-	 ft_memchr.c\
-	 ft_memcmp.c\
-	 ft_strlen.c\
-	 ft_strdup.c\
-	 ft_strcpy.c\
-	 ft_strncpy.c\
-	 ft_strcat.c\
-	 ft_strncat.c\
-	 ft_strlcat.c\
-	 ft_strchr.c\
-	 ft_strrchr.c\
-	 ft_strstr.c\
-	 ft_strnstr.c\
-	 ft_strcmp.c\
-	 ft_strncmp.c\
-	 ft_atoi.c\
-	 ft_isalpha.c\
-	 ft_isdigit.c\
-	 ft_isalnum.c\
-	 ft_isascii.c\
-	 ft_isprint.c\
-	 ft_toupper.c\
-	 ft_tolower.c\
-	 ft_memalloc.c\
-	 ft_memdel.c\
-	 ft_strnew.c\
-	 ft_strdel.c\
-	 ft_strclr.c\
-	 ft_putchar.c\
-	 ft_putstr.c\
-	 ft_putendl.c\
-	 ft_putnbr.c\
-	 ft_striter.c\
-	 ft_striteri.c\
-	 ft_strmap.c\
-	 ft_strmapi.c\
-	 ft_strequ.c\
-	 ft_strnequ.c\
-	 ft_strsub.c\
-	 ft_strjoin.c\
-	 ft_strtrim.c\
-	 ft_spacesplit.c\
-	 ft_strsplit.c\
-	 ft_quotes.c\
-	 ft_itoa.c\
-	 ft_putchar_fd.c\
-	 ft_putstr_fd.c\
-	 ft_putendl_fd.c\
-	 ft_putnbr_fd.c\
-	 ft_lstnew.c\
-	 ft_lstdelone.c\
-	 ft_lstdel.c\
-	 ft_lstadd.c\
-	 ft_lstiter.c\
-	 ft_strjoin_nf.c\
-	 ft_len_nospace.c\
-	 ft_isspace.c\
-	 ft_freestrtab.c\
-	 get_next_line.c
+DIR_OBJ =	./obj/
+PATH_INC =	./include/
+PATH_SUBD =	./ascii/ \
+			./io/ \
+			./list/ \
+			./memory/ \
+			./string/
+VPATH =	$(PATH_SUBD)
+INC_PATH =	$(patsubst %, -I %, $(PATH_INC))
 
-LIB = libft.a
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-AR = ar rc
-OBJ = $(SRC:.c=.o)
-RM = rm -rf
-RANLIB = ranlib
-CG = \033[92m
-CY =  \033[93m
-CE = \033[0m
-CB = \033[34m
+SRC_ASCII =		ft_isalnum.c \
+				ft_isalpha.c \
+				ft_isascii.c \
+				ft_isdigit.c \
+				ft_isprint.c \
+				ft_isblank.c \
+				ft_tolower.c \
+				ft_toupper.c
+SRC_IO =		ft_fputchar.c \
+				ft_fputendl.c \
+				ft_fputnbr.c \
+				ft_fputstr.c \
+				ft_putchar.c \
+				ft_putendl.c \
+				ft_putnbr.c \
+				ft_putstr.c \
+				gnl.c
+SRC_LIST =		ft_create_node.c \
+				ft_clear_list.c \
+				ft_node_push_back.c \
+				ft_node_push_front.c \
+				ft_node_push_after.c \
+				ft_go_start_list.c \
+				ft_go_end_list.c \
+				ft_list_size.c \
+				ft_add_list.c \
+				ft_bubblesort_list.c \
+				ft_insertsort_list.c \
+				ft_list_sort_rev.c \
+				ft_pop_node.c
+SRC_MEMORY =	ft_bzero.c \
+				ft_memalloc.c \
+				ft_memccpy.c \
+				ft_memchr.c \
+				ft_memcmp.c \
+				ft_memcpy.c \
+				ft_memdel.c \
+				ft_memmove.c \
+				ft_memset.c \
+				ft_malloc_tab_char.c \
+				ft_free_tab.c
+SRC_STRING =	ft_atoi.c \
+				ft_itoa.c \
+				ft_nbrlen.c \
+				ft_strcat.c \
+				ft_strchr.c \
+				ft_strclr.c \
+				ft_strcmp.c \
+				ft_strcpy.c \
+				ft_strdel.c \
+				ft_strdelpp.c \
+				ft_strdup.c \
+				ft_strequ.c \
+				ft_striter.c \
+				ft_striteri.c \
+				ft_strjoin.c \
+				ft_strstrjoin.c \
+				ft_strjoinchar.c \
+				ft_strlcat.c \
+				ft_strlen.c \
+				ft_strmap.c \
+				ft_strmapi.c \
+				ft_strncat.c \
+				ft_strncmp.c \
+				ft_strncpy.c \
+				ft_strnequ.c \
+				ft_strnew.c \
+				ft_strnstr.c \
+				ft_strrchr.c \
+				ft_strsplit.c \
+				ft_strseparate.c \
+				ft_strstr.c \
+				ft_strsub.c \
+				ft_perror.c \
+				ft_strtrim.c \
+				ft_exiterror.c \
+				ft_strfind.c \
+				ft_strfind_by_end.c \
+				ft_strcont.c \
+				ft_counttab.c
 
-all: $(LIB)
+OBJ_ASCII =		$(patsubst %.c, $(DIR_OBJ)%.o, $(SRC_ASCII))
+OBJ_IO =		$(patsubst %.c, $(DIR_OBJ)%.o, $(SRC_IO))
+OBJ_LIST =		$(patsubst %.c, $(DIR_OBJ)%.o, $(SRC_LIST))
+OBJ_MEMORY =	$(patsubst %.c, $(DIR_OBJ)%.o, $(SRC_MEMORY))
+OBJ_STRING =	$(patsubst %.c, $(DIR_OBJ)%.o, $(SRC_STRING))
+DEP_OBJ =	ascii_msg \
+			$(OBJ_ASCII) \
+			io_msg \
+			$(OBJ_IO) \
+			list_msg \
+			$(OBJ_LIST) \
+			memory_msg \
+			$(OBJ_MEMORY) \
+			string_msg \
+			$(OBJ_STRING)
+OBJ =	$(OBJ_ASCII) \
+		$(OBJ_IO) \
+		$(OBJ_LIST) \
+		$(OBJ_MEMORY) \
+		$(OBJ_STRING)
 
-$(LIB): start $(OBJ)
-	@echo "\033[K$(CY)[LIBFT] :$(CE) $(CG)Creating Library$(CE)\033[1A";
-	@$(AR) $(LIB) $(OBJ)
-	@$(RANLIB) $(LIB)
+all: $(NAME)
 
-nohd: $(OBJ)
-	@echo "\033[K$(CY)[LIBFT] :$(CE) $(CG)Creating Library$(CE)\033[1A";
-	@$(AR) $(LIB) $(OBJ)
-	@$(RANLIB) $(LIB)
+$(NAME): assemble mkobjdir $(DEP_OBJ)
+	@ /bin/echo -n "Archiving objects in $(NAME):"
+	@ $(AR) $(AFLAGS) $(NAME) $(OBJ)
+	@ echo " \033[32mAll done!\033[0m"
 
-nohdclean:
-	@echo "\033[K$(CY)[LIBFT] :$(CE) $(CG)Cleaning object files...$(CE)\033[1A";
-	@$(RM) $(OBJ)
+$(DIR_OBJ)%.o: %.c
+	@ /bin/echo -n "	$(notdir $@)"
+	@ $(CC) $(CFLAGS) -c -o $@ $< $(INC_PATH)
+	@ echo " \033[32mOK\033[0m"
 
-nohdfclean: nohdclean
-	@echo "\033[K$(CY)[LIBFT] :$(CE) $(CG)Cleaning Library...$(CE)\033[1A";
-	@$(RM) $(LIB)
+clean:
+	@ /bin/echo -n "Removing object files:"
+	@ rm -rf $(DIR_OBJ)
+	@ echo " \033[32mdone\033[0m"
 
-
-start:
-	@echo "\n\n"
-	@echo "	$(CG)                          00000000000000000000$(CE)";
-	@echo "	$(CG)                       00000000000000000000000000$(CE)";
-	@echo "	$(CG)                    000000000000000000000000000000000         00   0000$(CE)";
-	@echo "	$(CG)    000000        00000000000000000000000000000000000000       000000000$(CE)";
-	@echo "	$(CG) 00 000000      0000000000    0000000000000    0000000000       0000000$(CE)";
-	@echo "	$(CG) 000000000     0000000000      00000000000      00000000000    0000000$(CE)";
-	@echo "	$(CG)   0000000    00000000000      00000000000      0000000000000000000000$(CE)";
-	@echo "	$(CG)   00000000000000000000000    0000000000000    00000000000000  00000$(CE)";
-	@echo "	$(CG)    000000000000000000000000000000000000000000000000000000000     000$(CE)";
-	@echo "	$(CG)     000   000000000000000000000000000000000000000000000000000     0000$(CE)";
-	@echo "	$(CG)    0000   000000000000000000000000000000000000000000000000000       000$(CE)";
-	@echo "	$(CG)    000    0000000000000000000000000000000000000000000000 0000000000000000$(CE)";
-	@echo "	$(CG)   0000000000000  0000000000000000000000000000000000000   00000000000000000$(CE)";
-	@echo "	$(CG)   0000000000000   0000000000000000000000000000000000     00000000000$(CE)";
-	@echo "	$(CG)  0000       0000    000000000000000000000000000000      000$(CE)";
-	@echo "	$(CG)             00000     0000000000000000000000000         00$(CE)";
-	@echo "	$(CG)               0000          000000000000000           000$(CE)";
-	@echo "	$(CG)                00000                                0000$(CE)";
-	@echo "	$(CG)                 000000      00000000000000        0000$(CE)";
-	@echo "	$(CG)                   00000000     0000000000000   000000$(CE)";
-	@echo "	$(CG)                      00000000000  0000000000000000$(CE)";
-	@echo "	$(CG)                         000000000000000000000$(CE)";
-	@echo "	$(CG)                                 00000000000000$(CE)";
-	@echo "	$(CG)                                     00000000000$(CE)";
-	@echo "	$(CG)                                      0000000000$(CE)";
-	@echo "	$(CG)                                       0000000$(CE)";
-	@echo "\n\n"
-	@echo "		$(CG)      :::       :::::::::::::::::::: ::::::::::::::::::::: $(CE)";
-	@echo "		$(CG)     :+:           :+:    :+:    :+::+:           :+:      $(CE)";
-	@echo "		$(CG)    +:+           +:+    +:+    +:++:+           +:+       $(CE)";
-	@echo "		$(CG)   +#+           +#+    +#++:++#+ :#::+::#      +#+        $(CE)";
-	@echo "		$(CG)  +#+           +#+    +#+    +#++#+           +#+         $(CE)";
-	@echo "		$(CG) #+#           #+#    #+#    #+##+#           #+#          $(CE)";
-	@echo "		$(CG)############################## ###           ###           $(CE)";
-%.o: %.c
-	@echo "\033[K$(CY)[LIBFT] :$(CE) $(CG)Compiling $<$(CE)\033[1A";
-	@$(CC) $(CFLAGS) -c $< -o $@
-
-clean: start
-	@echo "\033[K$(CY)[LIBFT] :$(CE) $(CG)Cleaning object files...$(CE)\033[1A";
-	@$(RM) $(OBJ)
-
-fclean: start clean
-	@echo "\033[K$(CY)[LIBFT] :$(CE) $(CG)Cleaning Library...$(CE)\033[1A";
-	@$(RM) $(LIB)
+fclean: clean
+	@ /bin/echo -n "Removing library:"
+	@ rm -rf $(NAME)
+	@ echo " \033[32mdone\033[0m"
 
 re: fclean all
 
-.PHONY: all clean fclean re
+mkobjdir:
+	@ mkdir -p $(DIR_OBJ)
+
+assemble:
+	@ echo "Assembling:"
+
+ascii_msg:
+	@ echo "  ASCII functions:"
+
+io_msg:
+	@ echo "  I/O functions:"
+
+list_msg:
+	@ echo "  list functions:"
+
+memory_msg:
+	@ echo "  memory functions:"
+
+string_msg:
+	@ echo "  string functions:"
+
+.PHONY: clean fclean re

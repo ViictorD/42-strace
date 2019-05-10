@@ -1,3 +1,6 @@
+#ifndef FT_STRACE_H
+# define FT_STRACE_H
+
 #include <sys/types.h>
 #include <sys/ptrace.h>
 #include <sys/user.h>
@@ -23,3 +26,5 @@ void print_usage();
 void	wait_for_syscall();
 void	get_ret();
 void 	get_data(long reg, int flag);
+
+#endif
