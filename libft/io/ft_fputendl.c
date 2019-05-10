@@ -14,6 +14,9 @@
 
 void	ft_fputendl(char const *s, int fd)
 {
-	write(fd, s, ft_strlen(s));
-	write(fd, "\n", 1);
+	int	ret;
+
+	ret = write(fd, s, ft_strlen(s));
+	ret = write(fd, "\n", 1);
+	(void)ret;
 }

@@ -11,7 +11,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <errno.h>
-#include "../libft/includes/libft.h"
+#include "../libft/libft.h"
 
 int	status;
 int child;

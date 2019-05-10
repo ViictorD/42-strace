@@ -56,5 +56,6 @@ int					ft_strfind_by_end(const char *s, int c);
 int					ft_strfind(const char *s, int start, int c);
 char				ft_strcont(char *s1, char *s2);
 size_t				ft_counttab(char **tabu);
+char				*ft_strjoin_nf(char *s1, char *s2, int nb);
 
 #endif

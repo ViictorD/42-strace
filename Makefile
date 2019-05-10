@@ -1,49 +1,65 @@
-SRC = main.c
-SRC += syscall.c
-SRC += errno.c
-SRC += signal.c
-SRC += strace_lib.c
-SRC += strace_lib2.c
-
 NAME = ft_strace
-SRCDIR = srcs/
-OBJDIR = objs/
-OBJ = $(addprefix $(OBJDIR), $(SRC:.c=.o))
 
+CC = gcc
 
-LIB = libft/libft.a
-FLAG = -Wall -Werror -Wextra
-CG = \033[92m
-CY =  \033[93m
-CE = \033[0m
-CB = \033[34m
-INC = -I ./includes/
+CFLAGS = -Wall -Wextra -Werror
 
-all: lib $(NAME)
+MFLAGS = -lft
 
-lib:
-	-@make -C libft nohd
-	@mkdir -p $(OBJDIR)
+INCLUDE_DIR = ./includes
 
-$(NAME): $(OBJ)
-	@gcc -o $(NAME) $(OBJ) $(FLAG) $(INC) $(LIB);
-	@echo "\033[K$(CY)[FT_STRACE] :$(CE) $(CG)Compiling ft_strace$(CE)";
-	
+DIR_OBJ = ./obj/
 
-$(OBJ): $(OBJDIR)%.o: $(SRCDIR)%.c
-	@echo "\033[K$(CY)[FT_STRACE] :$(CE) $(CG)Compiling $<$(CE)\033[1A";
-	@gcc $(FLAG) -c $< -o $@ $(INC)
+DIR_LIB = ./libft/
+
+SRC_DIR = ./srcs/
+
+FILES = main.c \
+	signal.c \
+	errno.c \
+	strace_lib.c \
+	strace_lib2.c \
+	syscall.c
+
+SRCS = $(addprefix $(SRC_DIR), $(FILES)) $(addprefix $(SRC_DIR), $(MAIN))
+
+OBJS = $(patsubst %.c, $(DIR_OBJ)%.o, $(FILES)) $(patsubst %.c, $(DIR_OBJ)%.o, $(MAIN))
+
+DEP_OBJ = src_msg \
+		  $(OBJS)
+
+RM = /bin/rm -rf
+
+all: mkdirobj $(DEP_OBJ)
+		@ make -C $(DIR_LIB)
+		@ /bin/echo -n "Archiving object in $(NAME):"
+		@ $(CC) -o $(NAME) $(OBJS) $(MFLAGS) -L $(DIR_LIB)
+		@ echo " \033[32mAll done!\033[0m"
+
+$(DIR_OBJ)%.o: $(SRC_DIR)%.c
+	@ /bin/echo -n "    $(notdir $@)"
+	@ $(CC) $(CFLAGS) -c -o $@ $< -I $(INCLUDE_DIR)
+	@ echo " \033[32mOK\033[0m"
+
+mkdirobj:
+	@ mkdir -p $(DIR_OBJ)
 
 clean:
-	@echo "$(CY)[FT_STRACE] :$(CE) $(CG)Cleaning ft_strace objects$(CE)";
-	-@make -C libft nohdclean;
-	@/bin/rm -rf $(OBJ);
+	@ make clean -C $(DIR_LIB)
+	@ /bin/echo -n "Removing object files:"
+	@ $(RM) $(DIR_OBJ)
+	@ echo " \033[32mdone\033[0m"
 
 fclean: clean
-	@echo "\033[K$(CY)[FT_STRACE] :$(CE) $(CG)Cleaning binairies ...$(CE)";
-	-@make -C libft nohdfclean;
-	@/bin/rm -f $(NAME);
+	@ make fclean -C $(DIR_LIB)
+	@ /bin/echo -n "Removing library:"
+	@ $(RM) $(NAME)
+	@ $(RM) $(NAME).dSYM
+	@ echo " \033[32mdone\033[0m"
 
 re: fclean all
 
-.PHONY: all clean fclean re
+src_msg:
+	@ echo " src functions:"
+
+.PHONY : all clean fclean re mkdirobj src_msg debug
