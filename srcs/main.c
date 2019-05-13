@@ -40,8 +40,10 @@ void	get_sys_ret()
 		printf(") = ?\n");
 	else if (rax < -1)
 		printf(") = -1 %s\n", get_errno_name(rax));
-	else
+	else if (rax == (int)rax)
 		printf(") = %ld\n", rax);
+	else
+		printf(") = 0x%lx\n", rax);
 }
 
 void get_regs()
@@ -63,7 +65,7 @@ void get_regs()
 	}
 	else
 	{
-		if (reg[0])
+		/*if (regs[0])
 		{
 			get_data(regs[0], 0);
 			if (regs[1])
@@ -79,11 +81,11 @@ void get_regs()
 			}
 		}
 		else
-			printf("0");
-		// (regs[0]) ? (get_data(regs[0], 0)) : printf("0");
-		// (regs[1]) ? (get_data(regs[1], 1)) : 0;
-		// (regs[2]) ? (get_data(regs[2], 1)) : 0;
-		// (regs[3]) ? (get_data(regs[3], 1)) : 0;
+			printf("0");*/
+		(regs[0]) ? (get_data(regs[0], 0)) : printf("0");
+		(regs[1]) ? (get_data(regs[1], 1)) : 0;
+		(regs[2]) ? (get_data(regs[2], 1)) : 0;
+		(regs[3]) ? (get_data(regs[3], 1)) : 0;
 		get_sys_ret();
 	}
 }
