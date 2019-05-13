@@ -6,7 +6,7 @@
 /*   By: vdarmaya <vdarmaya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/10 11:16:30 by jtranchi          #+#    #+#             */
-/*   Updated: 2019/05/13 15:51:06 by vdarmaya         ###   ########.fr       */
+/*   Updated: 2019/05/13 16:21:57 by vdarmaya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ void get_regs()
 	else
 	{
 		int nb = get_syscall_nb_param(regs[6]);
-		//(regs[0]) ? (get_data(regs[0], 0)) : printf("0");
 		
 		int i = -1;
 		while (++i < nb)
