@@ -6,7 +6,7 @@
 /*   By: vdarmaya <vdarmaya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/17 15:35:28 by jtranchi          #+#    #+#             */
-/*   Updated: 2019/05/10 14:27:44 by vdarmaya         ###   ########.fr       */
+/*   Updated: 2019/05/13 14:19:26 by vdarmaya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ void	wait_for_syscall()
 	sigemptyset(&block);
 	sigemptyset(&empty);
 	ptrace(PTRACE_SYSCALL, child, NULL, NULL);
-	waitpid(child, &status, 0);
 	sigprocmask(SIG_SETMASK, &empty, NULL);
+	waitpid(child, &status, 0);
 	sigaddset( &block, SIGINT );
 	sigaddset( &block, SIGHUP );
 	sigaddset( &block, SIGQUIT );
