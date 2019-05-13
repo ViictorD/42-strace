@@ -6,7 +6,7 @@
 /*   By: vdarmaya <vdarmaya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/10 11:16:30 by jtranchi          #+#    #+#             */
-/*   Updated: 2019/05/13 15:12:38 by vdarmaya         ###   ########.fr       */
+/*   Updated: 2019/05/13 15:51:06 by vdarmaya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void get_regs()
 	regs[6] = ptrace(PTRACE_PEEKUSER, child, ORIG_RAX * 8, NULL);
 	if (regs[6] == SYS_clone)
 		return ;
+	
 	printf("%s(", get_syscall_name(regs[6]));
 	if (regs[6] == SYS_exit_group)
 	{
@@ -67,12 +68,12 @@ void get_regs()
 	}
 	else
 	{
+		int nb = get_syscall_nb_param(regs[6]);
 		(regs[0]) ? (get_data(regs[0], 0)) : printf("0");
-		(regs[1]) ? (get_data(regs[1], 1)) : 0;
-		(regs[2]) ? (get_data(regs[2], 1)) : 0;
-		(regs[3]) ? (get_data(regs[3], 1)) : 0;
-		(regs[4]) ? (get_data(regs[4], 1)) : 0;
-		(regs[5]) ? (get_data(regs[5], 1)) : 0;
+		
+		int i = 0;
+		while (++i < nb)
+			(regs[i]) ? (get_data(regs[i], 1)) : 0;
 		get_sys_ret();
 	}
 }
@@ -128,17 +129,14 @@ char	*check_file(char **argv, char **env)
 
 int	main(int argc, char **argv, char **env)
 {
-	char *args[2] =  {NULL};
 	char *file;
 
 	if (argc < 2)
 		print_usage();
 	file = check_file(argv, env);
-	args[0] = argv[1];
-	args[1] = NULL;
 	child = fork();
 	if (child == 0)
-		execve(file, args, env);
+		execve(file, argv + 1, env);
 	else 
 	{
 		ptrace(PTRACE_SEIZE, child, 0, 0);
