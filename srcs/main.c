@@ -6,7 +6,7 @@
 /*   By: vdarmaya <vdarmaya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/10 11:16:30 by jtranchi          #+#    #+#             */
-/*   Updated: 2019/05/10 14:37:45 by vdarmaya         ###   ########.fr       */
+/*   Updated: 2019/05/13 14:29:26 by vdarmaya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,27 @@ void get_regs()
 	}
 	else
 	{
-		(regs[0]) ? (get_data(regs[0], 0)) : printf("0");
-		(regs[1]) ? (get_data(regs[1], 1)) : 0;
-		(regs[2]) ? (get_data(regs[2], 1)) : 0;
-		(regs[3]) ? (get_data(regs[3], 1)) : 0;
+		if (reg[0])
+		{
+			get_data(regs[0], 0);
+			if (regs[1])
+			{
+				get_data(regs[1], 1);
+				if (regs[2])
+				{
+					get_data(regs[2], 1);
+					if (regs[3])
+						get_data(regs[3], 1);
+				}
+
+			}
+		}
+		else
+			printf("0");
+		// (regs[0]) ? (get_data(regs[0], 0)) : printf("0");
+		// (regs[1]) ? (get_data(regs[1], 1)) : 0;
+		// (regs[2]) ? (get_data(regs[2], 1)) : 0;
+		// (regs[3]) ? (get_data(regs[3], 1)) : 0;
 		get_sys_ret();
 	}
 }
@@ -94,7 +111,8 @@ char	*check_file(char **argv, char **env)
 			printf("stat : %s\n", strerror(errno));
 			exit(-1);
 		}
-	}else
+	}
+	else
 	{
 		int i = -1;
 		while (env[++i])
