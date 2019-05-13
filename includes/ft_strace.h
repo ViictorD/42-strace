@@ -11,6 +11,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <errno.h>
+#include <stdint.h>
 #include "../libft/libft.h"
 
 #define PTR		0

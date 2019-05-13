@@ -45,6 +45,8 @@ void 	get_data(long reg, int flag)
 			printf("\"%s\"", trim_back(message));
 		else
 			printf("%p", message);
-	else
+	else if (reg < 0x100000)
 		printf("%ld", reg);
+	else
+		printf("0x%lx", reg);
 }

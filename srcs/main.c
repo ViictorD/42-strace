@@ -40,7 +40,7 @@ void	get_sys_ret()
 		printf(") = ?\n");
 	else if (rax < -1)
 		printf(") = -1 %s\n", get_errno_name(rax));
-	else if (rax == (int)rax)
+	else if (rax < 0x100000)
 		printf(") = %ld\n", rax);
 	else
 		printf(") = 0x%lx\n", rax);
@@ -69,11 +69,11 @@ void get_regs()
 	else
 	{
 		int nb = get_syscall_nb_param(regs[6]);
-		(regs[0]) ? (get_data(regs[0], 0)) : printf("0");
+		//(regs[0]) ? (get_data(regs[0], 0)) : printf("0");
 		
-		int i = 0;
+		int i = -1;
 		while (++i < nb)
-			(regs[i]) ? (get_data(regs[i], 1)) : 0;
+			get_data(regs[i], !i ? 0 : 1);
 		get_sys_ret();
 	}
 }

@@ -349,25 +349,25 @@ const t_syscall	g_syscall_table[330] =
 
 char *get_syscall_name(int key)
 {
-	if (key < 0 || > 328)
+	if (key < 0 || key > 328)
 		return "function not found";
-	return g_syscall_table[key]->name;
+	return g_syscall_table[key].name;
 }
 
 int get_syscall_nb_param(int key)
 {
-	if (key < 0 || > 328)
+	if (key < 0 || key > 328)
 		return 1;
 	
 	int		count = 0;
-	t_syscall	*tmp = g_syscall_table[key];
+	t_syscall	tmp = g_syscall_table[key];
 	
-	tmp->rdi ? ++count : 0;
-	tmp->rsi ? ++count : 0;
-	tmp->rdx ? ++count : 0;
-	tmp->r10 ? ++count : 0;
-	tmp->r8 ? ++count : 0;
-	tmp->r9 ? ++count : 0;
+	tmp.rdi != NONE ? ++count : 0;
+	tmp.rsi != NONE ? ++count : 0;
+	tmp.rdx != NONE ? ++count : 0;
+	tmp.r10 != NONE ? ++count : 0;
+	tmp.r8 != NONE ? ++count : 0;
+	tmp.r9 != NONE ? ++count : 0;
 
 	return count;
 }
