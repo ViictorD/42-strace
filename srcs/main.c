@@ -6,7 +6,7 @@
 /*   By: vdarmaya <vdarmaya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/10 11:16:30 by jtranchi          #+#    #+#             */
-/*   Updated: 2019/05/13 14:29:26 by vdarmaya         ###   ########.fr       */
+/*   Updated: 2019/05/13 15:12:38 by vdarmaya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,44 +48,31 @@ void	get_sys_ret()
 
 void get_regs()
 {
-	long regs[6] = {0};
+	long regs[8] = {0};
 
 	regs[0] = ptrace(PTRACE_PEEKUSER, child, RDI * 8, NULL);
 	regs[1] = ptrace(PTRACE_PEEKUSER, child, RSI * 8, NULL);
 	regs[2] = ptrace(PTRACE_PEEKUSER, child, RDX * 8, NULL);
 	regs[3] = ptrace(PTRACE_PEEKUSER, child, R10 * 8, NULL);
-	regs[4] = ptrace(PTRACE_PEEKUSER, child, ORIG_RAX * 8, NULL);
-	if (regs[4] == SYS_clone)
+	regs[4] = ptrace(PTRACE_PEEKUSER, child, R8 * 8, NULL);
+	regs[5] = ptrace(PTRACE_PEEKUSER, child, R9 * 8, NULL);
+	regs[6] = ptrace(PTRACE_PEEKUSER, child, ORIG_RAX * 8, NULL);
+	if (regs[6] == SYS_clone)
 		return ;
-	printf("%s(", get_syscall_name(regs[4]));
-	if (regs[4] == SYS_exit_group)
+	printf("%s(", get_syscall_name(regs[6]));
+	if (regs[6] == SYS_exit_group)
 	{
 		(regs[0]) ? (get_data(regs[0], 0)) : printf("0");
 		printf(") = ?\n");
 	}
 	else
 	{
-		/*if (regs[0])
-		{
-			get_data(regs[0], 0);
-			if (regs[1])
-			{
-				get_data(regs[1], 1);
-				if (regs[2])
-				{
-					get_data(regs[2], 1);
-					if (regs[3])
-						get_data(regs[3], 1);
-				}
-
-			}
-		}
-		else
-			printf("0");*/
 		(regs[0]) ? (get_data(regs[0], 0)) : printf("0");
 		(regs[1]) ? (get_data(regs[1], 1)) : 0;
 		(regs[2]) ? (get_data(regs[2], 1)) : 0;
 		(regs[3]) ? (get_data(regs[3], 1)) : 0;
+		(regs[4]) ? (get_data(regs[4], 1)) : 0;
+		(regs[5]) ? (get_data(regs[5], 1)) : 0;
 		get_sys_ret();
 	}
 }
